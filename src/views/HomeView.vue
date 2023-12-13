@@ -1,18 +1,37 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
+  <HeaderView />
+  <main class="main">
+    <div class="container">
+      <div class="main__wrapper">
+        <CatalogView />
+        <SortView />
+      </div>
+    </div>
+  </main>
+  <FooterView />
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
-
-export default defineComponent({
-  name: 'HomeView',
-  components: {
-    HelloWorld,
-  },
-});
+<script setup lang="ts">
+import HeaderView from "@/components/HeaderView.vue";
+import SortView from "@/components/SortView.vue";
+import CatalogView from "@/components/CatalogView.vue";
+import FooterView from "@/components/FooterView.vue";
 </script>
+
+<style lang="scss">
+.main {
+  padding: 32px 0;
+  flex: 1;
+
+  &__wrapper {
+    display: flex;
+    list-style: none;
+    gap: 50px;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+  }
+}
+</style>
