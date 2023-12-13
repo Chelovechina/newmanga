@@ -7,4 +7,5 @@ export interface IState {
   genres: IGenre[];
   activeGenres: number[];
   isModalActive: boolean;
+  currentManga: IManga | undefined;
 }

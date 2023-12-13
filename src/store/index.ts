@@ -5,6 +5,7 @@ import { createStore } from "vuex";
 
 export default createStore<IState>({
   state: {
+    currentManga: undefined,
     mangas: mangas,
     searchValue: "",
     genres: genres,
@@ -31,6 +32,9 @@ export default createStore<IState>({
 
       return state.mangas;
     },
+    getGenreById: (state: IState) => (genreId: number) => {
+      return state.genres.find((genre) => genre.id === genreId);
+    },
   },
   mutations: {
     setSearchValue: (state, searchValue) => {
@@ -48,6 +52,9 @@ export default createStore<IState>({
     },
     setIsModalActive: (state, isActive) => {
       state.isModalActive = isActive;
+    },
+    setCurrentManga: (state, mangaId) => {
+      state.currentManga = state.mangas.find((manga) => manga.id === +mangaId);
     },
   },
   actions: {},
