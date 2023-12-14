@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import MangaView from "../views/MangaView.vue";
+import ChapterView from "../views/ChapterView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -12,6 +13,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/:id",
     name: "manga",
     component: MangaView,
+  },
+  {
+    path: "/read/:chapterId",
+    name: "chapter",
+    component: ChapterView,
   },
 ];
 

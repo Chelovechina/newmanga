@@ -6,6 +6,6 @@ export interface IManga {
   genres: number[];
   description: string;
   image: string;
-  chapters: IChapter[];
+  chapters: number[];
   bgImage: string;
 }

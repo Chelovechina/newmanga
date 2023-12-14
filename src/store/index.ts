@@ -1,14 +1,17 @@
-import { genres, mangas } from "@/db";
+import { chapters, genres, mangas } from "@/db";
 import { IState } from "@/types/IState";
-import { checkSubset } from "@/utils";
+import { checkSubset, findItemById } from "@/utils";
 import { createStore } from "vuex";
 
 export default createStore<IState>({
   state: {
     currentManga: undefined,
+    currentChapter: undefined,
+    totalChapters: 6,
     mangas: mangas,
     searchValue: "",
     genres: genres,
+    chapters: chapters,
     activeGenres: [],
     isModalActive: false,
   },
@@ -33,7 +36,10 @@ export default createStore<IState>({
       return state.mangas;
     },
     getGenreById: (state: IState) => (genreId: number) => {
-      return state.genres.find((genre) => genre.id === genreId);
+      return findItemById(state.genres, genreId);
+    },
+    getChapterById: (state: IState) => (chapterId: number) => {
+      return findItemById(state.chapters, chapterId);
     },
   },
   mutations: {
@@ -54,7 +60,10 @@ export default createStore<IState>({
       state.isModalActive = isActive;
     },
     setCurrentManga: (state, mangaId) => {
-      state.currentManga = state.mangas.find((manga) => manga.id === +mangaId);
+      state.currentManga = findItemById(state.mangas, mangaId);
+    },
+    setCurrentChapter: (state, chapterId) => {
+      state.currentChapter = findItemById(state.chapters, chapterId);
     },
   },
   actions: {},

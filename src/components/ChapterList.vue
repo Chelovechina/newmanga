@@ -4,14 +4,14 @@
     <ul class="chapters__list">
       <li
         class="chapters__item"
-        v-for="chapter in props.manga.chapters"
-        :key="chapter.id"
+        v-for="chapterId in props.manga.chapters"
+        :key="chapterId"
       >
         <router-link
           class="chapters__link"
-          :to="props.manga.id + '/chapters/' + chapter.id"
+          :to="'/read/' + chapterId.toString()"
         >
-          {{ chapter.name }}
+          {{ $store.getters.getChapterById(chapterId).name }}
         </router-link>
       </li>
     </ul>
@@ -54,6 +54,11 @@ const props = defineProps<{ manga: IManga }>();
     font-size: 14px;
     font-weight: 600;
     text-transform: uppercase;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      background: #5648b2;
+    }
   }
 }
 

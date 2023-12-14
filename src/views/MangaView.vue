@@ -31,7 +31,7 @@ const store = useStore<IState>();
 const route = useRoute();
 
 onBeforeMount(() => {
-  store.commit("setCurrentManga", route.params.id);
+  store.commit("setCurrentManga", +route.params.id);
 });
 </script>
 
